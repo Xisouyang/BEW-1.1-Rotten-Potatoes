@@ -1,2 +1,3 @@
-# BEW-1.1-rotten-potatoes
-rotten tomato clone
+# BEW-1.1-Rotten-Potatoes
+Rotten Tomato clone
+
