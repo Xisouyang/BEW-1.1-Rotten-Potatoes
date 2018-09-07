@@ -1,0 +1,27 @@
+<!-- views/reviews-new.handlebars -->
+
+<form method="POST" action="/reviews">
+    <fieldset>
+        <legend>
+            New Review
+        </legend>
+            <!-- TITLE -->
+        <p>
+            <label for="title">
+                Title
+            </label><br>
+            <input type="text" name="title" /><br><br>
+            <label for="description">
+                Description
+            </label><br>
+            <input type="text" name="description" />
+        </p>
+    </fieldset>
+
+    <!-- Button -->
+    <p>
+        <button type="submit">
+            Save Review
+        </button>
+    </p>
+</form>
