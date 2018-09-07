@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //model of actual array of objects
 const Review = mongoose.model('Review', {
     title: {type: String, required: true},
+    movieTitle: {type: String, required: true},
     description: {type: String, required: true}
 });
 
