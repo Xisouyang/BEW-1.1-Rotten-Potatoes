@@ -77,7 +77,6 @@ app.get('/reviews/:id/edit', (req, res) => {
     })
 })
 
-//UPDATE
 // UPDATE
 app.put('/reviews/:id', (req, res) => {
   Review.findByIdAndUpdate(req.params.id, req.body)
@@ -88,6 +87,16 @@ app.put('/reviews/:id', (req, res) => {
       console.log(err.message)
     })
 })
+
+//DELETE
+app.delete('/reviews/:id', (req, res) => {
+    Review.findByIdAndRemove(req.params.id, req.body)
+    .then(( review ) => {
+        res.redirect('/');
+    }).catch(err => {
+        console.log(err.message);
+    });
+});
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
