@@ -3,12 +3,15 @@ const app = express()
 var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override')
+
 
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
 // app.get('/', (req, res) => {
 //   res.render('home', { msg: 'Suh Dude'});
@@ -65,6 +68,26 @@ app.post('/reviews', (req, res) => {
     // console.log(req.body);
     //res.render('reviews-new', {})
 });
+
+//EDIT
+app.get('/reviews/:id/edit', (req, res) => {
+    Review.findById(req.params.id)
+    .then(( review )=> {
+        res.render('reviews-edit', {review: review});
+    })
+})
+
+//UPDATE
+// UPDATE
+app.put('/reviews/:id', (req, res) => {
+  Review.findByIdAndUpdate(req.params.id, req.body)
+    .then(review => {
+      res.redirect(`/reviews/${review._id}`)
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
+})
 
 app.listen(3000, () => {
   console.log('App listening on port 3000!')

@@ -1,36 +1,39 @@
 <!-- views/reviews-new.handlebars -->
 
-<form method="POST" action="/reviews">
+<!-- <form method="POST" action="/reviews">
     <fieldset>
         <legend>
             New Review
-        </legend>
+        </legend> -->
             <!-- TITLE -->
-        <p>
+        <!-- <p>
             <label for="review-title">
                 Title
             </label><br>
             <input id="review-title" type="text" name="title" /><br>
-        </p>
+        </p> -->
 
            <!-- MOVIE TITLE  -->
-           <label for="movie-title">
+           <!-- <label for="movie-title">
                Movie-Title
            </label><br>
            <input id="movie-title" name="movieTitle" type="text"/>
-        <p>
+        <p> -->
             <!-- DESCRIPTION -->
-            <label for="description">
+            <!-- <label for="description">
                 Description
             </label><br>
             <input type="text" name="description" type="text"/>
         </p>
-    </fieldset>
+    </fieldset> -->
 
-    <!-- Button -->
-    <p>
-        <button type="submit">
-            Save Review
-        </button>
-    </p>
+    <form method="POST" action="/reviews">
+        {{> reviews-form}}
+
+  <!-- BUTTON -->
+  <p>
+    <button type="submit">
+        Save Review
+    </button>
+  </p>
 </form>
