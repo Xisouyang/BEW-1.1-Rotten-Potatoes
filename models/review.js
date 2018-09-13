@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const Review = mongoose.model('Review', {
-    title: {type: String, required: true},
-    movieTitle: {type: String, required: true},
-    description: {type: String, required: true}
+    title: {type: String, required: false},
+    movieTitle: {type: String, required: false},
+    description: {type: String, required: false}
 });
 
 //All code above will be exported into the variable below and returned to whichever file called for it.

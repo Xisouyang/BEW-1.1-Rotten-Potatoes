@@ -1,5 +1,6 @@
 //reviews.js
-module.exports = function (app, Review) {
+const app = require('express')()
+const Review = require('../models/review');
 
     //HOME
     app.get('/', (req, res) => {
@@ -57,7 +58,7 @@ module.exports = function (app, Review) {
         })
     })
 
-    //DELETE
+    // DELETE
     app.delete('/reviews/:id', (req, res) => {
         Review.findByIdAndRemove(req.params.id, req.body)
         .then(( review ) => {
@@ -66,4 +67,7 @@ module.exports = function (app, Review) {
             console.log(err.message);
         });
     });
-}
+
+
+
+module.exports = app

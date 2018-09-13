@@ -4,8 +4,7 @@ var exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
-const Review = require('./models/review')
-
+const reviews = require('./controllers/reviews');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -13,8 +12,10 @@ mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
-const reviews = require('./controllers/reviews');
-reviews(app, Review)
+//this must be placed under bodyParser, otherwise the program doesn't know how to read the routes.
+app.use(reviews)
+
+
 // app.get('/', (req, res) => {
 //   res.render('home', { msg: 'Suh Dude'});
 // })
@@ -90,7 +91,7 @@ reviews(app, Review)
 //     })
 // })
 
-//DELETE
+// DELETE
 // app.delete('/reviews/:id', (req, res) => {
 //     Review.findByIdAndRemove(req.params.id, req.body)
 //     .then(( review ) => {
@@ -103,3 +104,5 @@ reviews(app, Review)
 app.listen(3000, () => {
   console.log('App listening on port 3000!')
 })
+
+module.exports = app
