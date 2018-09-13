@@ -3,14 +3,18 @@
 
 <a href="/reviews/new">New Review</a>
 
-{{#each reviews}}
-  <h2><a href="/reviews/{{ this.id }}">
-      {{this.title}}
-  </a></h2>
-  <p>
-      {{this.movieTitle}}
-  </p>
-  <small>
-      {{this.description}}
-  </small>
-{{/each}}
+<div class="row">
+    {{#each reviews}}
+    <div class="col-sm-3">
+        <h2><a href="/reviews/{{ this.id }}">
+            {{this.title}}
+        </a></h2>
+      <p>
+          {{this.movieTitle}}
+      </p>
+      <small>
+          {{this.description}}
+      </small>
+  </div>
+    {{/each}}
+</div>
