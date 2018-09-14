@@ -1,0 +1,34 @@
+<!-- comment-form.handlebars -->
+
+
+<form>
+    <fieldset>
+        <legend>
+            Add a Comment
+        </legend>
+        <!-- TITLE -->
+        <div class="form-group">
+            <label class="comment-title">Title</label><br>
+            <input class="form-control"
+                id="comment-title"
+                type="text"
+                name="title"
+                placeholder="Title" />
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="form-group">
+            <label for="comment-content">DESCRIPTION</label><br>
+            <textarea class="form-control"
+             id="comment-content"
+             name="content"
+             rows="10"
+             placeholder="Your Comment:"></textarea>
+        </div>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <div class="form-group">
+        <button class="primary btn-primary" type="submit">Save Comment</button>
+    </div>
+</form>
