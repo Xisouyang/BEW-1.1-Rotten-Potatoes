@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const reviews = require('./controllers/reviews');
@@ -14,6 +15,7 @@ app.use(methodOverride('_method'))
 
 //this must be placed under bodyParser, otherwise the program doesn't know how to read the routes.
 app.use(reviews)
+
 
 
 // app.get('/', (req, res) => {
