@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const reviews = require('./controllers/reviews');
