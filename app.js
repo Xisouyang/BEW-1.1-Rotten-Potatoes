@@ -6,6 +6,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const reviews = require('./controllers/reviews');
+var test = 0;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
