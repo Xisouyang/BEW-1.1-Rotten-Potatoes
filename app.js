@@ -4,17 +4,23 @@ var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 const bodyParser = require('body-parser');
-const methodOverride = require('method-override')
+const methodOverride = require('method-override');
 const reviews = require('./controllers/reviews');
+const comments = require('./controllers/comments');
+const comment = require('./models/comment.js');
+const Review = require('./models/review.js')
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'))
 
+
 //this must be placed under bodyParser, otherwise the program doesn't know how to read the routes.
 app.use(reviews)
+app.use(comments)
+
 
 
 

@@ -2,20 +2,29 @@
 
 <a href="/">Home</a>
 
-<!-- <div class="row">
-    <div class="col-sm-6 col-sm-offset-3"> -->
-        <h1>{{ review.title }}</h1>
-        <h2>{{ review.movieTitle }}</h2>
-        <p>{{ review.description }}</p>
+<div class="myContainer" style="margin:.5em 3em;">
+    <!-- <div class="row">
+        <div class="col-sm-6 col-sm-offset-3"> -->
+            <h1>{{ review.title }}</h1>
+            <h2>{{ review.movieTitle }}</h2>
+            <p>{{ review.description }}</p>
 
-        <p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
-        <p><form method="POST" action="/reviews/{{ review._id }}?_method=DELETE">
-            <button type="submit">Delete</button>
-        </form></p>
+            <p><a href="/reviews/{{review._id}}/edit">Edit</a></p>
+            <p><form method="POST" action="/reviews/{{ review._id }}?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form></p>
 
-        <hr>
+            <hr>
 
-        <!-- Comment Form -->
-        {{> comment-form}}
-    <!-- </div>
-</div> -->
+            <!-- Comment Form -->
+            {{> comment-form}}
+
+            <hr>
+
+            <!-- show comments -->
+            {{#each comments }}
+              {{> comment }}
+            {{/each}}
+        <!-- </div>
+    </div> -->
+</div>

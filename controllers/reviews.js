@@ -1,6 +1,7 @@
 //reviews.js
 const app = require('express')()
 const Review = require('../models/review');
+const Comment = require('../models/comment')
 
     //HOME
     app.get('/', (req, res) => {
@@ -16,16 +17,6 @@ const Review = require('../models/review');
     //NEW FORM
     app.get('/reviews/new', (req, res) => {
         res.render('reviews-new', {})
-    });
-
-    //INDIVIDUAL REV HOME
-    app.get('/reviews/:id', (req, res) => {
-        Review.findById(req.params.id).then((review) => {
-            res.render('reviews-show', {review: review})
-        }).catch((err) => {
-            console.log(err.message);
-        })
-        // res.send('I\'m a review');
     });
 
     app.post('/reviews', (req, res) => {
@@ -67,6 +58,20 @@ const Review = require('../models/review');
             console.log(err.message);
         });
     });
+
+    //SHOW
+    app.get('/reviews/:id', (req, res) => {
+        //find review
+        Review.findById(req.params.id).then(review => {
+            //fetch its comments
+            Comment.find({ reviewId: req.params.id }).then(comments => {
+                //respond with the template for both values
+                res.render('reviews-show', { review: review, comments: comments })
+            })
+        }).catch((err) => {
+            console.log(err.message);
+        })
+    })
 
 
 
