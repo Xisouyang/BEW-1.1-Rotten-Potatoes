@@ -1,5 +1,5 @@
 //reviews.js
-const app = require('express')()
+    const app = require('express')()
 const Review = require('../models/review');
 const Comment = require('../models/comment')
 
@@ -15,7 +15,7 @@ const Comment = require('../models/comment')
     // });
 
     //NEW FORM
-    app.get('/reviews/new', (req, res) => {
+    app.get('/movies/:movieId/reviews/new', (req, res) => {
         res.render('reviews-new', {})
     });
 

@@ -9,9 +9,6 @@ const Comment = require('../models/comment.js')
 app.post('/reviews/:id/comments/new', (req, res) => {
     // res.send("Comments inputted");
     Comment.create(req.body).then(comment => {
-        console.log(comment)
-        console.log();
-        console.log("req=");
         console.log(req.body);
         res.redirect(`/reviews/${req.params.id}`);
     }).catch(err => {
