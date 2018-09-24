@@ -1,0 +1,14 @@
+<!-- movies-index.handlebars -->
+
+<h1>Hi Movies</h1><br>
+
+<h2>Now Playing</h2>
+{{#each movies}}
+  <img src= "http://image.tmdb.org/t/p/w342/{{this.poster_path}}"><br><br>
+  <li>
+      {{ this.title }}
+  </li>
+  <h2>
+      <a href="/movies/{{ this.id }}">
+  </h2>
+{{/each}}

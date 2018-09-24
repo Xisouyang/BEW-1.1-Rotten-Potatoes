@@ -7,8 +7,10 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const reviews = require('./controllers/reviews');
 const comments = require('./controllers/comments');
+const movies = require('./controllers/movies');
 const comment = require('./models/comment.js');
 const Review = require('./models/review.js')
+
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -20,6 +22,7 @@ app.use(methodOverride('_method'))
 //this must be placed under bodyParser, otherwise the program doesn't know how to read the routes.
 app.use(reviews)
 app.use(comments)
+app.use(movies)
 
 
 
