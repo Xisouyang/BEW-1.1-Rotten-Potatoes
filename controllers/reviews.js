@@ -1,5 +1,5 @@
 //reviews.js
-    const app = require('express')()
+const app = require('express')()
 const Review = require('../models/review');
 const Comment = require('../models/comment')
 
@@ -15,34 +15,44 @@ const Comment = require('../models/comment')
     // });
 
     //NEW FORM
-    app.get('/movies/:movieId/reviews/new', (req, res) => {
-        res.render('reviews-new', {})
+    app.get('/movies/:id/reviews/new', (req, res) => {
+        res.render('reviews-new', { movieId: req.params.id })
     });
 
-    app.post('/reviews', (req, res) => {
+    // app.post('/reviews', (req, res) => {
+    //     Review.create(req.body).then(( review ) => {
+    //         console.log(review);
+    //         res.redirect(`/reviews/${review._id}`);
+    //     }).catch((err) => {
+    //         console.log(err.message);
+    //     });
+    //     // console.log(req.body);
+    //     //res.render('reviews-new', {})
+    // });
+
+    //CREATE
+    app.post('/movies/:movieId/reviews', (req, res) => {
+        console.log(req.body)
         Review.create(req.body).then(( review ) => {
-            console.log(review);
-            res.redirect(`/reviews/${review._id}`);
-        }).catch((err) => {
-            console.log(err.message);
-        });
-        // console.log(req.body);
-        //res.render('reviews-new', {})
-    });
+            res.redirect(`/movies/${req.params.movieId}/reviews/${review._id}`)
+        })
+    })
 
     //EDIT
-    app.get('/reviews/:id/edit', (req, res) => {
+    app.get('/movies/:movieId/reviews/:id/edit', (req, res) => {
         Review.findById(req.params.id)
         .then(( review )=> {
-            res.render('reviews-edit', {review: review});
+            res.render('reviews-edit', {review: review, movieId: req.params.movieId});
         })
     })
 
     // UPDATE
-    app.put('/reviews/:id', (req, res) => {
+    app.put('/movies/:movieId/reviews/:id', (req, res) => {
       Review.findByIdAndUpdate(req.params.id, req.body)
         .then(review => {
-          res.redirect(`/reviews/${review._id}`)
+            //console.log("yea")
+          res.redirect(`/movies/${review.movieId}/reviews/${review._id}`)
+          //console.log(res.body)
         })
         .catch(err => {
           console.log(err.message)
@@ -50,7 +60,7 @@ const Comment = require('../models/comment')
     })
 
     // DELETE
-    app.delete('/reviews/:id', (req, res) => {
+    app.delete('/movies/:movieId/reviews/:id', (req, res) => {
         Review.findByIdAndRemove(req.params.id, req.body)
         .then(( review ) => {
             res.redirect('/');
@@ -60,7 +70,7 @@ const Comment = require('../models/comment')
     });
 
     //SHOW
-    app.get('/reviews/:id', (req, res) => {
+    app.get('/movies/:movieId/reviews/:id', (req, res) => {
         //find review
         Review.findById(req.params.id).then(review => {
             //fetch its comments

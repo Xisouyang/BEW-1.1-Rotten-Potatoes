@@ -1,41 +1,11 @@
 <!-- views/reviews-new.handlebars -->
 
-<!-- <form method="POST" action="/reviews">
-    <fieldset>
-        <legend>
-            New Review
-        </legend> -->
-            <!-- TITLE -->
-        <!-- <p>
-            <label for="review-title">
-                Title
-            </label><br>
-            <input id="review-title" type="text" name="title" /><br>
-        </p> -->
+<form method="POST" action="/movies/{{movieId}}/reviews">
+    <legend>New Review</legend>
+    {{> reviews-form}}
 
-           <!-- MOVIE TITLE  -->
-           <!-- <label for="movie-title">
-               Movie-Title
-           </label><br>
-           <input id="movie-title" name="movieTitle" type="text"/>
-        <p> -->
-            <!-- DESCRIPTION -->
-            <!-- <label for="description">
-                Description
-            </label><br>
-            <input type="text" name="description" type="text"/>
-        </p>
-    </fieldset> -->
-
-    <!-- <div class="row">
-        <div class="col-sm-6 col-sm-offset-3"> -->
-            <form method="POST" action="/reviews">
-                {{> reviews-form}}
-
-          <!-- BUTTON -->
-          <div class="form-group">
-              <button class="btn btn-primary" type="submit">Save Review</button>
-          </div>
-      </form>
-  <!-- </div>
-</div> -->
+    <!-- BUTTON -->
+    <div class="form-group">
+      <button class="btn btn-primary" type="submit">Save Review</button>
+    </div>
+</form>
