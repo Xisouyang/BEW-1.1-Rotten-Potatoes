@@ -10,7 +10,8 @@ app.post('/reviews/:id/comments/new', (req, res) => {
     // res.send("Comments inputted");
     Comment.create(req.body).then(comment => {
         console.log(req.body);
-        res.redirect(`/reviews/${req.params.id}`);
+        res.redirect(`/movies/${req.body.movieId}/reviews/${req.params.id}`);
+        console.log("work")
     }).catch(err => {
         console.log(err.message);
     })
@@ -19,7 +20,7 @@ app.post('/reviews/:id/comments/new', (req, res) => {
 //DELETE COMMENT
 app.delete('/reviews/comments/:id', (req, res) => {
     Comment.findByIdAndRemove(req.params.id).then((comment) => {
-        res.redirect(`/reviews/${comment.reviewId}`);
+        res.redirect(`/movies/${req.body.movieId}/reviews/${comment.reviewId}`);
     }).catch(err => {
         console.log(err.message);
     })
