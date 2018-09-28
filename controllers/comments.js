@@ -6,14 +6,15 @@ const Comment = require('../models/comment.js')
 
 
 //NEW COMMENT
-app.post('/reviews/:id/comments/new', (req, res) => {
+app.post('/reviews/comments', (req, res) => {
     // res.send("Comments inputted");
     Comment.create(req.body).then(comment => {
         console.log(req.body);
-        res.redirect(`/movies/${req.body.movieId}/reviews/${req.params.id}`);
-        console.log("work")
+        // res.redirect(`/movies/${req.body.movieId}/reviews/${req.params.id}`);
+        res.status(200).send({ comment: comment })
     }).catch(err => {
         console.log(err.message);
+        res.status(400).send({ err: err })
     })
 });
 

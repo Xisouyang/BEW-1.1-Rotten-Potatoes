@@ -16,6 +16,7 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 // mongoose.connect('mongodb://localhost/rotten-potatoes', { useNewUrlParser: true });
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(methodOverride('_method'))
 
 
@@ -23,6 +24,7 @@ app.use(methodOverride('_method'))
 app.use(reviews)
 app.use(comments)
 app.use(movies)
+app.use(express.static('public'));
 
 
 
