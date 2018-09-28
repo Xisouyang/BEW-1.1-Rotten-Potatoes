@@ -38,5 +38,6 @@ document.getElementById("newComment").addEventListener("submit", e => {
         console.log(error);
         //handle any errors
         alert("Problem with saving comment, please try again.")
+        
     });
 });
