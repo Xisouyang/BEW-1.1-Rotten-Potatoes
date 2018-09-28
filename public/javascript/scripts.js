@@ -32,7 +32,7 @@ document.getElementById("newComment").addEventListener("submit", e => {
         //wait for success response from the server
         console.log(response)
         //remove the info from the form
-        //display the data as a new comment on the page
+        //display the data as a new comment on the page sdfdsfdsf
     })
     .catch(function(error) {
         console.log(error);
