@@ -1,4 +1,7 @@
 //reviews.js
+
+//ROUTES FOR REVIEWS
+
 const app = require('express')()
 const Review = require('../models/review');
 const Comment = require('../models/comment')

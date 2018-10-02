@@ -2,7 +2,7 @@
 
 // alert("hello");
 
-//listen for form submit event
+//ADD COMMENT TO PAGE
 function addComment() {
     //serialize the form data into an object
     let comment = {};
@@ -10,8 +10,11 @@ function addComment() {
     for(var i = 0; i <inputs.length; i++) {
         comment[inputs[i].name] = inputs[i].value;
     }
+    //Need this so we know which comment to delete
     let index = document.getElementsByClassName('card').length
-console.log(index);
+    // console.log(index);
+
+    //automatically refreshes page to show comments
     axios.post('/reviews/comments', comment).then(res => {
         document.getElementById('comments').innerHTML =
         `
@@ -33,6 +36,7 @@ console.log(index);
     })
 }
 
+//DELETE COMMENT FROM PAGE
 function deleteComment(index){
     let comment = document.getElementById(`comment-${index}`)
     let commentId = comment.getAttribute('comment-id')
