@@ -2,7 +2,7 @@
 
 <!-- this shows the individual comments on the page -->
 
-<div class="card">
+<div class="card" id="comment-{{@index}}" comment-id="{{this._id}}">
     <div class="card-block">
         <h4 class="card-title">
             {{ this.title }}
@@ -12,7 +12,7 @@
         </p>
 
         <!-- Delete Link -->
-        <p><form method="POST" action="/reviews/comments/{{this._id}}?_method=DELETE">
+        <p><form method="POST" onsubmit="event.preventDefault();deleteComment({{@index}});">
             <button class="btn btn-link" type="submit">Delete</button>
         </form></p>
     </div>

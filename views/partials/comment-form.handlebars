@@ -2,9 +2,8 @@
 
 <!-- This shows the comment forms on the page -->
 
-
-<form action="#" id="newComment">
-    <input type="hidden" value="{{review._id}}" name="reviewId">
+<form action="#" id="new-comment" onsubmit="event.preventDefault();addComment();">
+    <input type="hidden" class="form-control" value="{{review._id}}" name="reviewId">
     <input type="hidden" value="{{review.movieId}}" name="movieId">
     <fieldset>
         <legend>
